@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head th:insert="header.html">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-12">
+    <h2 th:each = "stu :${studentter}">
+
+    </h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> ID </th>
+                    <th> NAME </th>
+                    <th> SURNAME </th>
+                    <th> EXAM </th>
+                    <th> MARK </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="stu :${studentter}" th:style="${stu.exam}<50 ? 'color: red;' : 'color: black;'">
+                    <td><span th:text="${stu.id}"></span></td>
+                    <td><span th:text="${stu.name}"></span></td>
+                    <td><span th:text="${stu.surname}"></span></td>
+                    <td><span th:text="${stu.exam}"></span></td>
+                    <td>
+                        <span  th:if="${stu.exam}>89">A</span>
+                        <span th:if="${stu.exam}>=75 and ${stu.exam}<90">B</span>
+                        <span  th:if="${stu.exam}>=60 and ${stu.exam}<75">C</span>
+                        <span  th:if="${stu.exam}>=50 and ${stu.exam}<60">D</span>
+                        <span  th:if="${stu.exam}<50">F</span>
+
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
